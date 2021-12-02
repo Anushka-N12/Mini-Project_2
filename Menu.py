@@ -16,8 +16,13 @@ garage = door_vehicle("On","Garage door","Garage", 199)
 gate = door_vehicle("On","Main Gate","Entrance of property", 250)
 AC1 = AC("On","AC","Bedroom 1",24)
 AC2 = AC("On","AC","Bedroom 2",66)
+object_list = [cctv,vacuum_cleaner,heater,living_lights,outdoor_lights,main_door,bhk_safe,garage,gate,AC1,AC2]
+#all objects are added into a list to make the program less complicated in 2nd commit
 
 #now the menu
+#code under choices were similar when they are under same class, so let's make a common one for them!
+#shorter codes are more faster and efficient, therefore provides better performance!
+
 choice = 1
 while choice != 12:
     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
@@ -37,31 +42,19 @@ while choice != 12:
     print("Option - 12: Exit")
     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     print()
+    
     choice = int(input("Enter Option:"))
-    if choice == 1:
-        print(cctv.__str__())
+    
+    if choice in [1,2,3]: #since these 3 objects are under same class, same code will work for all of them
+        print(object_list[choice-1].__str__()) #will put object name before the function call
         changestate = input("Do you wish to turn this device On/Off? [y/n]: ")
         if changestate in ["Y","y"]:
-            print(cctv.change_state())
-        else:
-            print("No changes done")
-    elif choice == 2:
-        print(vacuum_cleaner.__str__())
-        changestate = input("Do you wish to turn this device On/Off? [y/n]: ")
-        if changestate in ["Y","y"]:
-            print(vacuum_cleaner.change_state())
-        else:
-            print("No changes done")
-    elif choice == 3:
-        print(heater.__str__())
-        changestate = input("Do you wish to turn this device On/Off? [y/n]: ")
-        if changestate in ["Y","y"]:
-            print(heater.change_state())
+            print(object_list[choice-1].change_state())
         else:
             print("No changes done")
             
-    elif choice == 4:
-        print(living_lights. __str__())
+    elif choice in [4,5]: #both under Lighting class
+        print(object_list[choice-1]. __str__())
         print("*******************************")
         print("Option - 1: Turn On/Off")
         print("Option - 2: Increase Brightness")
@@ -69,71 +62,38 @@ while choice != 12:
         print("*******************************")
         light_choice = int(input("Enter Option:"))
         if light_choice == 1:
-            print(living_lights.change_state())
+            print(object_list[choice-1].change_state())
         elif light_choice == 2:
-            print(living_lights.increase_brightness())
+            print(object_list[choice-1].increase_brightness())
         elif light_choice == 3:
-            print(living_lights.decrease_brightness())
+            print(object_list[choice-1].decrease_brightness())
         else:
-            print("Invalid Option")    
-    elif choice == 5:
-        print(outdoor_lights. __str__())
-        print("*******************************")
-        print("Option - 1: Turn On/Off")
-        print("Option - 2: Increase Brightness")
-        print("Option - 3: Decrease Brightness")
-        print("*******************************")
-        light_choice = int(input("Enter Option:"))
-        if light_choice == 1:
-            print(outdoor_lights.change_state())
-        elif light_choice == 2:
-            print(outdoor_lights.increase_brightness())
-        elif light_choice == 3:
-            print(outdoor_lights.decrease_brightness())
-        else:
-            print("Invalid Option") 
-    elif choice == 6:
-        print(main_door. __str__())
+            print("Invalid Option")
+            
+    elif choice in [6,7]: #both under security_lock class
+        print(object_list[choice-1]. __str__())
         print("*******************************")
         print("Option - 1: Turn On/Off")
         print("Option - 2: Lock/Unlock")
         print("*******************************")
         lock_choice = int(input("Enter Option:"))
         if lock_choice == 1:
-            print(main_door.change_state())
+            print(object_list[choice-1].change_state())
         elif lock_choice == 2:
-            print(main_door.change_security())
+            print(object_list[choice-1].change_security())
         else:
             print("Invalid Option")
-    elif choice == 7:
-        print(bhk_safe. __str__())
-        print("*******************************")
-        print("Option - 1: Turn On/Off")
-        print("Option - 2: Lock/Unlock")
-        print("*******************************")
-        lock_choice = int(input("Enter Option:"))
-        if lock_choice == 1:
-            print(bhk_safe.change_state())
-        elif lock_choice == 2:
-            print(bhk_safe.change_security())
-        else:
-            print("Invalid Option")
-    elif choice == 8:
-        print(garage.__str__())
+            
+    elif choice in [8,9]:
+        print(object_list[choice-1].__str__())
         changestate = input("Do you wish to turn this device On/Off? [y/n]: ")
         if changestate in ["Y","y"]:
-            print(garage.change_state())
+            print(object_list[choice-1].change_state())
         else:
             print("No changes done")
-    elif choice == 9:
-        print(gate.__str__())
-        changestate = input("Do you wish to turn this device On/Off? [y/n]: ")
-        if changestate in ["Y","y"]:
-            print(gate.change_state())
-        else:
-            print("No changes done")
-    elif choice == 10:
-        print(AC1. __str__())
+            
+    elif choice in [10,11]:
+        print(object_list[choice-1]. __str__())
         print("*******************************")
         print("Option - 1: Turn On/Off")
         print("Option - 2: Increase Temperature")
@@ -141,28 +101,13 @@ while choice != 12:
         print("*******************************")
         temp_choice = int(input("Enter Option:"))
         if temp_choice == 1:
-            print(AC1.change_state())
+            print(object_list[choice-1].change_state())
         elif temp_choice == 2:
-            print(AC1.increase_temp())
+            print(object_list[choice-1].increase_temp())
         elif temp_choice == 3:
-            print(AC1.decrease_temp())
+            print(object_list[choice-1].decrease_temp())
         else:
             print("Invalid Option") 
-    elif choice == 11:
-        print(AC2. __str__())
-        print("*******************************")
-        print("Option - 1: Turn On/Off")
-        print("Option - 2: Increase Temperature")
-        print("Option - 3: Decrease Temperature")
-        print("*******************************")
-        temp_choice = int(input("Enter Option:"))
-        if temp_choice == 1:
-            print(AC2.change_state())
-        elif temp_choice == 2:
-            print(AC2.increase_temp())
-        elif temp_choice == 3:
-            print(AC2.decrease_temp())
-        else:
-            print("Invalid Option") 
+
     elif choice not in range(1,13):
         print("Invalid Option")
