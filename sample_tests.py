@@ -29,7 +29,7 @@ main_door = security_lock("On","Main door lock","Entrance","Locked")
 bhk_safe = security_lock("On","Lock of safe","Bedroom","Unlocked")
 print(main_door. __str__())
 print(bhk_safe.__str__())
-print(bhk_safe.change_security("Locked"))
+print(bhk_safe.change_security())
 print()
 
 #Let's test the door_vehicle class!
@@ -45,4 +45,10 @@ AC2 = AC("On","AC","Bedroom 2",66)
 print(AC1.__str__())
 print(AC2.__str__())
 print()
+
+#Let's test the fire_alarm class!
+alarm1 = fire_alarm("On","Temperature Sensor","Kitchen",25)
+print(alarm1.__str__())
+print()
+
 
