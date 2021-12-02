@@ -74,3 +74,16 @@ class AC(IoT):
         elif self.state in ["Off","off"]:
             return f'Sorry, {self.name} is off'
 
+#below class displays message on status of sprinkler based on temperature
+class fire_alarm(IoT): 
+    def __init__(self, state, name, location, temp_celcius): 
+        super().__init__(state, name, location) #makes actions under main class happen here too
+        self.temp_celcius = temp_celcius
+    def __str__(self):
+        if self.state in ["On","on"]:
+            if self.temp_celcius > 55: #sprinklers are usually activated above this temperature
+                return super().__str__() + f'. ALERT! Temperature of area is too high! Sprinklers are On!'
+            else:
+                return super().__str__() + f'. Sprinklers are off since temperature of area is normal.'
+        elif self.state in ["Off","off"]:
+            return super().__str__()

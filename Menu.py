@@ -16,7 +16,8 @@ garage = door_vehicle("On","Garage door","Garage", 199)
 gate = door_vehicle("On","Main Gate","Entrance of property", 250)
 AC1 = AC("On","AC","Bedroom 1",24)
 AC2 = AC("On","AC","Bedroom 2",66)
-object_list = [cctv,vacuum_cleaner,heater,living_lights,outdoor_lights,main_door,bhk_safe,garage,gate,AC1,AC2]
+alarm1 = fire_alarm("On","Temperature Sensor","Kitchen",25)
+object_list = [cctv,vacuum_cleaner,heater,living_lights,outdoor_lights,main_door,bhk_safe,garage,gate,AC1,AC2,alarm1]
 #all objects are added into a list to make the program less complicated in 2nd commit
 
 #now the menu
@@ -24,7 +25,7 @@ object_list = [cctv,vacuum_cleaner,heater,living_lights,outdoor_lights,main_door
 #shorter codes are more faster and efficient, therefore provides better performance!
 
 choice = 1
-while choice != 12:
+while choice != 13:
     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     print("*         SMART HOME          *")
     print("*******************************")
@@ -39,7 +40,8 @@ while choice != 12:
     print("Option - 9: Main Gate")
     print("Option - 10: AC1")
     print("Option - 11: AC2")
-    print("Option - 12: Exit")
+    print("Option - 12: Alarm")
+    print("Option - 13: Exit")
     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     print()
     
@@ -108,6 +110,7 @@ while choice != 12:
             print(object_list[choice-1].decrease_temp())
         else:
             print("Invalid Option") 
-
-    elif choice not in range(1,13):
+    elif choice == 12:
+        print(object_list[choice-1]. __str__())
+    elif choice not in range(1,14):
         print("Invalid Option")
